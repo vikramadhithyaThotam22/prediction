@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Response Prediction Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .form-container { max-width: 600px; margin: 0 auto; }
+        .form-container label { display: block; margin-bottom: 8px; }
+        .form-container input { width: 100%; padding: 8px; margin-bottom: 12px; }
+        .form-container button { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        .form-container button:hover { background-color: #45a049; }
+        .result { font-size: 18px; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Patient Response Prediction Tool</h2>
+        <form action="/predict" method="POST">
+            <label for="bmi">BMI:</label>
+            <input type="number" id="bmi" name="bmi" step="0.01" required>
+            
+            <label for="afc">AFC:</label>
+            <input type="number" id="afc" name="afc" step="0.01" required>
+            
+            <label for="fsh">FSH:</label>
+            <input type="number" id="fsh" name="fsh" step="0.01" required>
+            
+            <label for="amh">AMH:</label>
+            <input type="number" id="amh" name="amh" step="0.01" required>
+            
+            <label for="lh">LH:</label>
+            <input type="number" id="lh" name="lh" step="0.01" required>
+            
+            <label for="oestradiol">Oestradiol:</label>
+            <input type="number" id="oestradiol" name="oestradiol" step="0.01" required>
+            
+            <button type="submit">Predict Response</button>
+        </form>
+    </div>
+
+    {% if response %}
+    <div class="result">
+        <h3>Predicted Response: {{ response }}</h3>
+    </div>
+    {% endif %}
+</body>
+</html>
